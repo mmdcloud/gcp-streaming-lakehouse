@@ -1,0 +1,18 @@
+{
+  "type": "record",
+  "name": "TelemetryEvent",
+  "namespace": "com.platform.telemetry",
+  "doc": "Clickstream / CDC envelope. Additive changes only: new fields MUST have defaults (use a new Pub/Sub schema revision).",
+  "fields": [
+    { "name": "event_id",        "type": "string" },
+    { "name": "event_type",      "type": "string" },
+    { "name": "event_timestamp", "type": "string", "doc": "RFC 3339 UTC" },
+    { "name": "source",          "type": "string" },
+    { "name": "schema_version",  "type": "int" },
+    { "name": "user_id",         "type": ["null", "string"], "default": null },
+    { "name": "session_id",      "type": ["null", "string"], "default": null },
+    { "name": "entity",          "type": ["null", "string"], "default": null, "doc": "CDC: source table / entity" },
+    { "name": "op",              "type": ["null", "string"], "default": null, "doc": "CDC: c|u|d|r" },
+    { "name": "payload",         "type": ["null", "string"], "default": null, "doc": "JSON document as text" }
+  ]
+}
